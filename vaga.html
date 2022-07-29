@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaga selecionada</title>
+    <style>
+        *{
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0%;
+            padding: 0%;
+        }
+        body{
+            background-color: #ffffff;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            
+        }
+        main{
+            margin-top: 50px;
+        }
+        .containerInput{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 1px solid #767676;
+            border-radius: 10px;
+            padding: 10px;
+            height: 45px;
+            margin: 10px 20px;
+
+        }
+        .containerInput label{
+            font-size: 16px;
+            height: 100%;
+            display: none;
+            color: #767676;
+        }
+
+        input{
+            font-size: 16px;
+            height: 100%;
+            width: 100%;
+            outline: none;
+            border: none;
+            background-color: transparent;
+        }
+        .containerInput select{
+            background-color: transparent;
+            font-size: 16px;
+            height: 100%;
+            outline: none;
+            border: none;
+        }
+        .containerInput option{
+            background-color: rgb(58, 58, 58);
+            color: white;
+        }
+        .containerButton{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 1px solid transparent;
+            border-radius: 10px;
+            padding: 10px;
+            height: 45px;
+            margin: 40px 20px;
+            background-color: #00A650;
+
+        }
+
+        .containerButton input{
+            background-color: transparent;
+            color: white;
+
+        }
+
+
+        footer{
+            text-align: center;
+            background-color: #028541;
+            margin: 0%;
+            padding: 20px;
+
+        }
+        footer p{
+            margin-top: 10px;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+        <form action="https://api.staticforms.xyz/submit" method="post">
+            <input type="hidden" name="accessKey" value="af19849b-2510-4006-b45e-999c2de41f57">
+            <input type="hidden" name="redirectTo" value="https://rh-recruitment0001.github.io/Vagas/complet.html">
+
+            
+            <div class="containerInput">
+                <label id="labelNome" for="nome">Nome Completo*</label>
+                <input type="text" id="nome" placeholder="Nome Completo*" onclick="labelDaseble('labelNome', 'nome')">
+                <input name="name" type="text" id="nomeUp" style="display: none;">
+            </div>
+            <div class="containerInput">
+                <label id="labelEmail" for="email">Email*</label>
+                <input name="email" type="email" id="email" placeholder="Email*" onclick="labelDaseble('labelEmail', 'email')">
+            </div>
+            <div class="containerInput">
+                <label id="labelTel" >Celular*</label>
+                <input name="phone" type="tel" id="celular" placeholder="Celular*" onclick="labelDaseble('labelTel', 'tel')">
+            </div>
+            <div class="containerInput">
+                <label id="labelIdade" style="display: block;">Que dia você nasceu?</label>
+                <input type="date" id="idade" value="2000-01-01">
+            </div>
+            
+            <div class="containerInput">
+                <select id="escolaridade">
+                    <option value="">Qual sua Escolaridade?</option>
+                    <option value="valor1">Ensino Fundamental</option>
+                    <option value="valor2">Ensino Médio</option>
+                    <option value="valor3">Ensino Superior Incompleto</option>
+                    <option value="valor4">Ensino Superior Completo</option>
+                    <option value="valor5">Ensino Pós Graduação</option>
+                    <option value="valor6">Outros</option>
+                </select>
+            </div>
+            <div class="containerInput">
+                <select id="Disponibilidade">
+                    <option value="">Disponibilidade de horário</option>
+                    <option value="valor1">Manhã</option>
+                    <option value="valor2">Tarde</option>
+                    <option value="valor3">Noite</option>
+                    <option value="valor4">Indiferente</option>
+                </select>
+            </div>
+
+            <div class="containerButton">
+                <input type="submit" value="CONTINUAR" onclick="continuar()">
+            </div>
+
+            <input name="message"  type="tel" id="titleVaga" style="display: none;">
+
+
+        </form>
+    </main>
+
+
+        <footer>
+            <p>Terms & Conditions - Privacy Policy - Cookies</p>
+            <p>© 2022 - Empregotrue.</p>
+        </footer>
+
+    <script>
+
+        document.getElementById('titleVaga').value = localStorage.getItem('titleVaga')
+
+
+        function labelDaseble(idLabel, idInput){
+            document.getElementById(idLabel).style.display = 'block'
+            document.getElementById(idInput).placeholder = ''
+        }
+        function continuar(){
+            let nome = document.getElementById('nome').value
+            let idade = document.getElementById('idade').value
+
+            document.getElementById('nomeUp').value = nome + ', ' + idade
+
+            window.location.href = "complet.html"
+        }
+    </script>
+
+</body>
+</html>
